@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  client:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"  # Map container port 3000 to host port 3000
+    networks:
+      - mynetwork
+    depends_on:
+      - server
+
+  server:
+    build:
+      context: ./server
+    ports:
+      - "8080:8080"  # Map container port 8080 to host port 8080
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
